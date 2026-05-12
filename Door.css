@@ -17,6 +17,7 @@ body {
 }
 .ItemShop {
     margin-left: auto;
+    width: 30%;
 }
 #UnlockCPSPageBtn {
     background: red;
