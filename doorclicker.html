@@ -1,0 +1,75 @@
+<!doctype html!>
+<html>
+    <head>
+        <link rel="stylesheet" href="Door.css">
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+    </head>
+    <body>
+            <div id="ClickAMT">
+                <div>
+                    <div>
+                        <h1>Door Clicks:  </h1>
+                        <h1 id="clicks"> 0 </h1>
+                    </div>
+                    <div>
+                        <h1> CPC: </h1>
+                        <h1 id="cpc"> 1 </h1>
+                    </div>
+                    <div>
+                        <h1> CPS: </h1>
+                        <h1 id="cps"> 1 </h1>
+                    </div>
+                    <div>
+                        <h1> World Highscore: </h1>
+                        <style type="text/css">
+                            .dreamloLBTable { border-collapse:collapse;text-align:center;width: 200px; }
+                            .dreamloLBTable th { border-bottom: 1px solid #EEEEEE;font-weight:bold;margin:0;padding:4px; }
+                            .dreamloLBTable td { border-bottom: 1px solid#EEEEEE;margin:0;padding:4px; }
+                        </style>
+
+                        <script src="http://dreamlo.com/lb/6a0163d18f40bc10683f8f2d/js" type="text/javascript"></script>
+                    </div>
+                    <div>
+                        Want to submit your score?
+                        <button class="Btn" onclick="submitToWorld()"> Submit Here! </button>
+                    </div>
+                </div>
+            </div>
+            <img src="door.png" onclick="poop()" id="DoorIMG">
+            <!-- CPC Item Bar -->
+        <div class="ItemShop ClassicBord">
+            <div id="CpcItemBar">
+                <img src="handle.jpg" onclick="buyHandle()">
+                <h3> 
+                Cost = 250 door-clicks 
+                Reward = 5 cpc
+                </h3>
+                <img src="key.jpg" onclick="buyKey()">
+                <h3> 
+                Cost = 1,000 door-clicks 
+                Reward = 25 cpc
+                </h3>
+                <img src="lock.jpg" onclick="buyLock()">
+                <h3> 
+                Cost = 10,000 door-clicks 
+                Reward = 300 cpc
+                </h3>
+                <button onclick="CPSitembar()" id="GotoCpsBtn"> CPS Itembar </button>
+            </div>
+            <!-- CPS item bar -->
+            <div id="CpsItemBar">
+                <img src="wood.jpg" onclick="buyWood()">
+                <h3>
+                Cost = 100,000 door-clicks
+                Reward = 1 cps
+                </h3>
+                <button onclick="CPCitembar()" id="GotoCpcBtn"> CPC Itembar </button>  
+            </div>
+            <p> Ver. 1.61 </p>
+            <p>Charlie.Webs Creation <p> 
+            <a href="Credits.html"> Credits Open In New Tab </a>
+        <div>
+        <script src="door.js"></script>
+        
+    </body>
+</html>

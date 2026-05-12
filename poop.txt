@@ -1,0 +1,235 @@
+``JS
+// main variables
+let doorClicks = 0
+let cpc = 1
+let cps = 0
+// If Then variables
+let Reached10000 = 0
+//Html Elements Variables
+let doorIMG = document.getElementById("DoorIMG")
+let cpcEL = document.getElementById("cpc")
+let cpsEL = document.getElementById("cps")
+let doorEl = document.getElementById("clicks")
+let cpcItembar = document.getElementById("CpcItemBar")
+let cpsItembar = document.getElementById("CpsItemBar")
+let cpcItembarBtn = document.getElementById("CpcItemBarBtn")
+let cpsItembarBtn = document.getElementById("CpsItemBarBtn")
+let gotoCpsBtn = document.getElementById("GotoCpsBtn")
+let gotoCpcBtn = document.getElementById("GotoCpcBtn")
+
+function submitToWorld() {
+    let name = prompt("Enter your name:");
+    if (!name) return;
+
+    fetch(`http://dreamlo.com/(placeholderlol)/add/${name}/${doorClicks}`)
+    .then(() => {
+        alert("Score submitted!");
+        fetch(`https://dreamlo.com/6a0163d18f40bc10683f8f2d/pipe/5`, { cache: 'no-store' })
+    });
+}
+
+
+function buyWood() {
+    if (doorClicks>100000) {
+        cps = cps + 1
+        doorClicks = doorClicks - 100000
+        refresh()
+    } else {
+        alert("Not Enough Clicks")
+    }
+}
+
+setInterval(() => {
+    if (cps > 0) {
+        doorClicks = doorClicks + cps;
+        console.log("test")
+        refresh();
+    }
+}, 1000);
+
+
+
+function refresh() {
+    cpcEL.innerText = cpc
+    cpsEL.innerText = cps
+    doorEl.innerText = doorClicks
+    Check10000()
+}
+
+
+async function poop() {
+    doorClicks = doorClicks + cpc
+    doorEl.innerText = doorClicks
+    console.log(doorClicks)
+    doorIMG.src = "open-door.png"
+    const sleep = ms => new Promise(res => setTimeout(res, ms));
+    await sleep(500);
+    doorIMG.src = "door.png"
+}
+function buyHandle() {
+    refresh()
+    if (doorClicks>=250) {
+        doorClicks = doorClicks - 250
+        if (cpc === 1) {
+            cpc = 5
+            refresh()
+        } else {
+            cpc = cpc + 5
+            refresh()
+        }
+    } else {
+        alert("Not Enough Clicks!");
+    }
+}
+function buyKey() {
+    refresh()
+    if (doorClicks>=1000) {
+        doorClicks = doorClicks - 1000
+        if (cpc === 1) {
+            cpc = 25
+            refresh()
+        } else {
+            cpc = cpc + 25
+            refresh()
+        }
+    } else {
+        alert("Not Enough Clicks!");
+    }
+}
+function buyLock() {
+    refresh()
+    if (doorClicks>=10000) {
+        doorClicks = doorClicks - 10000
+        if (cpc === 1) {
+            cpc = 300
+            refresh()
+        } else {
+            cpc = cpc + 300
+            refresh()
+        }
+    } else {
+        alert("Not Enough Clicks!");
+    }
+}
+
+if (doorClicks>1000000){
+        if (cpcUnlockBtnView===0) {
+        refresh()
+    }
+}
+// CPS & CPC Item bar functions 
+
+function CPSitembar() {
+    if (Reached10000>0){
+        cpsItembar.style.display = "block"
+        cpcItembar.style.display = "none"
+        gotoCpsBtn.style.display = "block"
+        gotoCpcBtn.style.display = "none"
+    }
+}
+function CPCitembar() {
+    cpcItembar.style.display = "block"
+    cpsItembar.style.display = "none"
+    gotoCpsBtn.style.display = "block"
+    gotoCpcBtn.style.display = "none"
+}
+function Check10000() {
+    if (doorClicks>10000) {
+        Reached10000 = 1
+        gotoCpsBtn.style.display = "block"
+    }
+}
+function CpsItemBarBtnhide() {
+    gotoCpsBtn.style.display = "none"
+}
+function init() {
+    CpsItemBarBtnhide()
+    CpsItemBarBtnhide()
+    CPCitembar()
+    refresh()
+}
+
+init()
+``Html
+<!doctype html!>
+<html>
+    <head>
+        <link rel="stylesheet" href="Door.css">
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+    </head>
+    <body>
+            <div id="ClickAMT">
+                <div>
+                    <div>
+                        <h1>Door Clicks:  </h1>
+                        <h1 id="clicks"> 0 </h1>
+                    </div>
+                    <div>
+                        <h1> CPC: </h1>
+                        <h1 id="cpc"> 1 </h1>
+                    </div>
+                    <div>
+                        <h1> CPS: </h1>
+                        <h1 id="cps"> 1 </h1>
+                    </div>
+                    <div>
+                        <h1> World Highscore: </h1>
+                        <style type="text/css">
+                        .dreamloLBTable { border-collapse:collapse;
+                                        text-align:center;
+                                        width: 300px; }
+                        .dreamloLBTable th { border-bottom: 1px solid #EEEEEE;
+                                            font-weight:bold;
+                                            margin:0;
+                                            padding:4px; }
+                        .dreamloLBTable td { border-bottom: 1px solid#EEEEEE;
+                                            margin:0;
+                                            padding:4px; }
+                        </style>
+                        <ul id="scoreList"></ul>
+                        <script src="http://dreamlo.com/lb/6a0163d18f40bc10683f8f2d/js" type="text/javascript"></script>
+                    </div>
+                    <div>
+                        Want to submit your score?
+                        <button class="Btn" onclick="submitToWorld()"> Submit Here! </button>
+                    </div>
+                </div>
+            </div>
+            <img src="door.png" onclick="poop()" id="DoorIMG">
+            <!-- CPC Item Bar -->
+        <div class="ItemShop ClassicBord">
+            <div id="CpcItemBar">
+                <img src="handle.jpg" onclick="buyHandle()">
+                <h3> 
+                Cost = 250 door-clicks 
+                Reward = 5 cpc
+                </h3>
+                <img src="key.jpg" onclick="buyKey()">
+                <h3> 
+                Cost = 1,000 door-clicks 
+                Reward = 25 cpc
+                </h3>
+                <img src="lock.jpg" onclick="buyLock()">
+                <h3> 
+                Cost = 10,000 door-clicks 
+                Reward = 300 cpc
+                </h3>
+                <button onclick="CPSitembar()" id="GotoCpsBtn"> CPS Itembar </button>
+            </div>
+            <!-- CPS item bar -->
+            <div id="CpsItemBar">
+                <img src="wood.jpg" onclick="buyWood()">
+                <h3>
+                Cost = 100,000 door-clicks
+                Reward = 1 cps
+                </h3>
+                <button onclick="CPCitembar()" id="GotoCpcBtn"> CPC Itembar </button>  
+            </div>
+            <p> Ver. 1.52 </p>
+            <p>Charlie.Webs Creation <p> 
+            <a href="Credits.html"> Credits </a>
+        <div>
+        <script src="door.js"></script>
+        
+    </body>
+</html>

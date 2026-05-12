@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'StaryFont';
+    src: url('fontymuffin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'StaryFont', sans-serif;
+    display: flex;
+}
+/* #DoorIMG { 
+    width: 500px;
+     height: 375px; 
+ } */
+#ClickAMT {
+    display: flex;
+}
+.ItemShop {
+    margin-left: auto;
+}
+#UnlockCPSPageBtn {
+    background: red;
+}
+.hide {
+    display: none;
+}
+.ClassicBord {
+    border-left: 10px double pink;
+    padding: 50px;
+}
+.Btn {
+    background: pink;
+    border: 5px double #0d0d0d;
+    border-radius: 5px;
+    padding: 10px 5px;
+}
